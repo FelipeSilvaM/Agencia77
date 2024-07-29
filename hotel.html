@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro de Hoteles</title>
+        <script>
+            function validarFormulariHotel() {
+                var nombre = document.forms["formHotel"]["nombre"].value;
+                var ubicacion = document.forms["formHotel"]["ubicacion"].value;
+                var habitaciones = document.forms["formHotel"]["Habitaciones_disponibles"].value;
+                var tarifa = document.forms["formHotel"]["tarifa_noche"].value;
+
+                if (nombre == "" || ubicacion == "" || habitaciones == "" || tarifa == "") {
+                    alert("Tienen que estar completo los campos");
+                    return false;
+                }
+                if(isNaN(habitaciones) || habitaciones < 1) {
+                    alert("El número de habitaciones disponibles debe ser un número positivo");
+                    return false;
+                }
+                if(isNaN(tarifa) || tarifa < 0) {
+                    alert("La tarifa por noche debe ser un número positivo");
+                    return false;
+                }
+                return true
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Registrar un Nuevo Hotel</h2>
+        <form name="formHotel" action="registrar_vuelo.php" onsubmit="return validarFormulariHotel()" method="post">
+           Nombre: <input type="text" name="nombre" required><br>
+           ubicación: <input type="number" name="Habitaciones_disponibles" required><br>
+           Tarifa por Noche: <input type="text" name="tarifa_noche" required><br>
+           <input type="submit" value="Registrar Hotel">
+        </form>
+    </body>
+</html>
